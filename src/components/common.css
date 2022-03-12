@@ -18,6 +18,7 @@ body {
 .form-field {
   background-color: var(--dark-theme-shade-80);
 }
+
 .input-form {
   width: 40%;
   margin: 5px auto;
