@@ -1,8 +1,9 @@
+import InputForm from "./components/InputForm.jsx"
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World from dev branch</h1>
+    <div>
+      <InputForm />
     </div>
   );
 }
