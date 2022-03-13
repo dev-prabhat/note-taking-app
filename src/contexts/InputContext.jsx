@@ -12,11 +12,9 @@ const InputFormProvider = ({ children }) => {
 
     function noteReducer(state, action) {
         switch (action.type) {
-            case "ADD_TITLE":
-                const { id, title } = action.payload
-                return { ...state, value: { ...state.value, id, title } }
-            case "ADD_DESCRIPTION":
-                return { ...state, value: { ...state.value, description: action.payload } }
+            case "ADD":
+                const { id, title, description } = action.payload
+                return { ...state, value: { ...state.value, id, title, description } }
             case "DELETE":
                 return { ...state, notes: state.notes.filter(item => item.id !== action.payload) }
             case "SUBMIT":

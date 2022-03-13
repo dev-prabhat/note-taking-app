@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { v4 as uuid } from "uuid"
 import { useNote } from "../contexts/InputContext"
 import "./common.css"
 
 export default function InputForm() {
-    const { state, dispatch } = useNote()
-    const { value } = state
+    const { dispatch } = useNote()
+
+    const [form, setForm] = useState({ title: "", description: "" })
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch({ type: "ADD", payload: { id: uuid(), title: form.title, description: form.description } })
+        setForm({ title: "", description: "" })
         dispatch({ type: "SUBMIT" })
     }
 
@@ -21,8 +24,8 @@ export default function InputForm() {
                 class="form-field border-radius-xs padding-xs"
                 placeholder="title "
                 required
-                value={value.title}
-                onChange={(e) => dispatch({ type: "ADD_TITLE", payload: { id: uuid(), title: e.target.value } })}
+                value={form.title}
+                onChange={(e) => setForm(pre => ({ ...pre, title: e.target.value }))}
             />
 
             <label class="form-label">Description:</label>
@@ -31,8 +34,8 @@ export default function InputForm() {
                 placeholder="write here..."
                 rows="5"
                 required
-                value={value.description}
-                onChange={(e) => dispatch({ type: "ADD_DESCRIPTION", payload: e.target.value })}
+                value={form.description}
+                onChange={(e) => setForm(pre => ({ ...pre, description: e.target.value }))}
             >
             </textarea>
             <button className='btn btn-primary head-sm'>Submit</button>
