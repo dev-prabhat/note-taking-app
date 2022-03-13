@@ -36,3 +36,7 @@ body {
   overflow-wrap: break-word;
   border: 1px solid var(--dark-theme-shade-80);
 }
+
+.note-title {
+  margin-bottom: 8px;
+}
