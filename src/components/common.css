@@ -20,6 +20,24 @@ body {
 }
 
 .input-form {
-  width: 40%;
+  width: 30%;
   margin: 5px auto;
 }
+
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.single-note {
+  background-color: var(--danger-color);
+  max-width: 30%;
+  overflow-wrap: break-word;
+  border: 1px solid var(--dark-theme-shade-80);
+}
+
+.note-title {
+  margin-bottom: 8px;
+}
+
