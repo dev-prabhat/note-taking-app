@@ -20,12 +20,13 @@ export default function InputForm() {
         <form className='input-form' onSubmit={handleSubmit}>
             <label class="form-label">Title:</label>
             <input
+
                 type="text"
                 class="form-field border-radius-xs padding-xs"
                 placeholder="title "
                 required
                 value={form.title}
-                onChange={(e) => setForm(pre => ({ ...pre, title: e.target.value }))}
+                onChange={(e) => setForm(prev => ({ ...prev, title: e.target.value }))}
             />
 
             <label class="form-label">Description:</label>
@@ -35,7 +36,7 @@ export default function InputForm() {
                 rows="5"
                 required
                 value={form.description}
-                onChange={(e) => setForm(pre => ({ ...pre, description: e.target.value }))}
+                onChange={(e) => setForm(prev => ({ ...prev, description: e.target.value }))}
             >
             </textarea>
             <button className='btn btn-primary head-sm'>Submit</button>
