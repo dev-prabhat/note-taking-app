@@ -17,6 +17,18 @@ const InputFormProvider = ({ children }) => {
                 return { ...state, value: { ...state.value, id, title, description } }
             case "DELETE":
                 return { ...state, notes: state.notes.filter(item => item.id !== action.payload) }
+            case "EDIT":
+                return {
+                    ...state, notes: state.notes.map((item) => {
+                        if (item.id === action.payload.id) {
+                            item.title = action.payload.title
+                            item.description = action.payload.description
+                            return item
+                        }
+                        return item
+                    })
+                }
+
             case "SUBMIT":
                 return { ...state, notes: [...state.notes, state.value], value: { title: "", description: "" } }
             case "GET":

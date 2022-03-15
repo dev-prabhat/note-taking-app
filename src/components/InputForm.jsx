@@ -18,20 +18,19 @@ export default function InputForm() {
 
     return (
         <form className='input-form' onSubmit={handleSubmit}>
-            <label class="form-label">Title:</label>
+            <label className="form-label">Title:</label>
             <input
-
                 type="text"
-                class="form-field border-radius-xs padding-xs"
+                className="form-field border-radius-xs padding-xs"
                 placeholder="title "
                 required
                 value={form.title}
                 onChange={(e) => setForm(prev => ({ ...prev, title: e.target.value }))}
             />
 
-            <label class="form-label">Description:</label>
+            <label className="form-label">Description:</label>
             <textarea
-                class="form-field border-radius-xs padding-xs"
+                className="form-field border-radius-xs padding-xs"
                 placeholder="write here..."
                 rows="5"
                 required
