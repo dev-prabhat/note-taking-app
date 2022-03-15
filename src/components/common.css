@@ -31,7 +31,7 @@ body {
 }
 
 .single-note {
-  background-color: var(--danger-color);
+  box-shadow: 0px 0px 5px 2px var(--danger-color);
   max-width: 30%;
   overflow-wrap: break-word;
   border: 1px solid var(--dark-theme-shade-80);
