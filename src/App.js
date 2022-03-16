@@ -8,8 +8,8 @@ function App() {
       <Header />
       <InputForm />
       <NoteList />
-    </div>
-  )
+    </div >
+  );
 }
 
 export default App;
