@@ -40,3 +40,27 @@ body {
 .note-title {
   margin-bottom: 8px;
 }
+
+.action-container {
+  position: relative;
+  cursor: pointer;
+  margin: 10px;
+  width: fit-content;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 5px var(--dark-theme-shade-80);
+}
+
+.action-message {
+  position: absolute;
+  background-color: var(--primary-theme-light-color);
+  color: var(--secondary-theme-color);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.action-container:hover .action-message {
+  bottom: -40px;
+  visibility: visible;
+  opacity: 1;
+}
