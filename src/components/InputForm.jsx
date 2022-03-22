@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { v4 as uuid } from "uuid"
 import { useNote } from "../contexts/InputContext"
+
+import { GrAdd } from "react-icons/gr";
 import "./common.css"
 
 export default function InputForm() {
@@ -27,7 +29,6 @@ export default function InputForm() {
                 value={form.title}
                 onChange={(e) => setForm(prev => ({ ...prev, title: e.target.value }))}
             />
-
             <label className="form-label">Description:</label>
             <textarea
                 className="form-field border-radius-xs padding-xs"
@@ -38,7 +39,10 @@ export default function InputForm() {
                 onChange={(e) => setForm(prev => ({ ...prev, description: e.target.value }))}
             >
             </textarea>
-            <button className='btn btn-primary head-sm'>Submit</button>
+            <div className='action-container padding-xs'>
+                <span className='action-message padding-xxs border-radius-xs'>Add </span>
+                <GrAdd onClick={handleSubmit} className='head-sm' />
+            </div>
         </form>
     )
 }

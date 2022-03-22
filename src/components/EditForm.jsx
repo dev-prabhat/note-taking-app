@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNote } from '../contexts/InputContext';
 
 import { FiTrash2, FiEdit } from "react-icons/fi";
@@ -7,13 +7,23 @@ import { GrUpdate } from "react-icons/gr";
 
 import "./common.css"
 
-const EditForm = ({ id, title, description }) => {
+const EditForm = ({ note }) => {
+    const { id, title, description } = note
     const { dispatch } = useNote();
     const [isEditing, setIsEditing] = useState(false);
     const [editFrom, setEditForm] = useState({
         updatedTitle: title,
         updatedDescription: description,
     });
+
+    useEffect(() => {
+        if (note) {
+            setEditForm(prev => ({
+                ...prev
+            }))
+        }
+    }, [note.title, note.description, note])
+
     const deleteItem = (id) => {
         dispatch({ type: 'DELETE', payload: id });
     };
@@ -27,7 +37,7 @@ const EditForm = ({ id, title, description }) => {
         setIsEditing((prev) => !prev);
     };
     return (
-        <div className="single-note border-radius-xs margin-xs padding-xs">
+        <div className="single-note border-radius-xs margin-sm padding-sm">
             {isEditing ? (
                 <form onSubmit={updateItem}>
                     <label className="form-label">Title:</label>
@@ -54,17 +64,32 @@ const EditForm = ({ id, title, description }) => {
                         required
                     >
                     </textarea>
-                    <button className='padding-xxs'>
-                        <GrUpdate />
-                    </button>
-                    <button className='padding-xxs' onClick={() => setIsEditing((prev) => !prev)}><ImCancelCircle /></button>
+                    <div className='d-flex'>
+                        <div className='action-container padding-xs'>
+                            <span className='action-message padding-xxs border-radius-xs'>Update</span>
+                            <GrUpdate onClick={updateItem} className='head-sm' />
+                        </div>
+                        <div className='action-container padding-xs'>
+                            <span className='action-message padding-xxs border-radius-xs'>Cancel</span>
+                            <ImCancelCircle onClick={() => setIsEditing((prev) => !prev)} className='head-sm' />
+                        </div>
+                    </div>
                 </form>
             ) : (
                 <div>
                     <h1 className="head-md note-title">{title}</h1>
                     <div className="text-sm">{description}</div>
-                    <button className="padding-xxs" onClick={() => deleteItem(id)}><FiTrash2 /></button>
-                    <button className="padding-xxs" onClick={() => setIsEditing((prev) => !prev)}><FiEdit /></button>
+                    <div className='d-flex'>
+                        <div className='action-container padding-xs'>
+                            <span className='action-message padding-xxs border-radius-xs'>Delete</span>
+                            <FiTrash2 onClick={() => deleteItem(id)} />
+                        </div>
+                        <div className='action-container padding-xs'>
+                            <span className='action-message padding-xxs border-radius-xs'>Edit</span>
+                            <FiEdit onClick={() => setIsEditing((prev) => !prev)} />
+                        </div>
+                    </div>
+
                 </div>
             )}
         </div>

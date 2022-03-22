@@ -11,8 +11,8 @@ export default function NoteList() {
         <div className="padding-sm notes">
             {
                 notes.length > 0 && (
-                    notes.map(({ id, title, description }) => (
-                        <EditForm key={id} id={id} title={title} description={description} />
+                    notes.map((note) => (
+                        <EditForm key={note.id} note={note} />
                     ))
                 )
             }
